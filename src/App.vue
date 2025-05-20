@@ -1,17 +1,14 @@
 <script setup>
-import AppHeader from './components/AppHeader.vue'
-import AppHero from './components/AppHero.vue'
-import AppFooter from './components/AppFooter.vue'
+// import AppHeader from './components/AppHeader.vue'
+// import AppHero from './components/AppHero.vue'
+// import AppFooter from './components/AppFooter.vue'
+import Layout from '@/layouts/Layout.vue'
 </script>
 
 <template>
-  <div class="app">
-    <AppHeader>
-      <AppHero />
-    </AppHeader>
-    <AppFooter />
-  </div>
-  <RouterView />
+  <Layout> 
+    <RouterView />
+  </Layout>
 </template>
 
 <style scoped>
