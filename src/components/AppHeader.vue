@@ -20,10 +20,10 @@
                 <a href="/more" class="menu__link link">Наши контакты</a>
               </li>
               <li class="menu__item">
-                <a href="#" class="menu__link link">Войти</a>
+                <a href="/login" class="menu__link link">Войти</a>
               </li>
               <li class="menu__item">
-                <a href="#" class="menu__link link">Зарегистрироваться</a>
+                <a href="/register" class="menu__link link">Зарегистрироваться</a>
               </li>
             </ul>
           </nav>
