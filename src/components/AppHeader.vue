@@ -8,7 +8,7 @@
       <div class="header__wrapper">
         <div class="header__top">
           <div class="logo">
-           <a href="#"><img src="/logo.png" width="130px" alt="logo" title="logo"></a>
+            <a href="#"><img src="/logo.png" alt="logo" title="logo"></a>
           </div>
 
           <nav class="menu">
@@ -28,7 +28,7 @@
             </ul>
           </nav>
         </div>
-        <slot></slot>
+        <slot/>
       </div>
     </div>
   </header>
@@ -38,8 +38,8 @@
 .header {
   padding: 20px;
   background: linear-gradient(135deg, #2C2C2C, #1C1C1C);
-  font-size: #FFFFFF;
   overflow: hidden;
+  border-bottom: 1px solid #333333;
 
   &__container {
     max-width: 1400px;
@@ -63,14 +63,10 @@
 
 .menu {
   position: relative;
-
-  // left: 300px;
   &__list {
     display: flex;
     gap: 100px;
   }
-
-  .menu__item {}
 
   &__link {
     display: block;
@@ -88,6 +84,7 @@
 .logo {
   font-size: 22px;
   color: #FFFFFF;
+  width: 130px;
 }
 
 .header__button {

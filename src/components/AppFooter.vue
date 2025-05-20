@@ -29,7 +29,7 @@
   padding: 40px 0;
   text-align: center;
   width: 100%;
-  border-top: 1px solid #333;
+  border-top: 1px solid #333333;
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
   position: fixed;
   bottom: 0;
@@ -71,6 +71,7 @@
 
     &--xai {
       color: #8a8a8a;
+
       &::after {
         content: '';
         position: absolute;
