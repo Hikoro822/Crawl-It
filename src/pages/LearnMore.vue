@@ -1,14 +1,7 @@
 <script setup>
-
+import AppInfo from "@/components/AppInfo.vue";
 </script>
 
 <template>
-    <h2>Hello, IM learn more</h2>
+  <AppInfo/>
 </template>
-
-<style scoped lang="scss">
-    h2 {
-        color: red;
-        font-size: 100px;
-    }
-</style>
