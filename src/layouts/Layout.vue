@@ -5,19 +5,27 @@ import AppFooter from '@/components/AppFooter.vue';
 
 <template>
   <div class="layout">
-    <AppHeader />
+    <AppHeader/>
     <main class="layout__main">
-      <slot /> <!-- Сюда вставляется Home -->
+      <slot/>
     </main>
-    <AppFooter />
+    <AppFooter/>
   </div>
 </template>
 
 <style scoped lang="scss">
 .layout {
-  min-height: 100vh;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   background: linear-gradient(135deg, #2C2C2C, #1C1C1C);
+  overflow: hidden;
+
+  &__main {
+    height: calc(100% - 300px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 </style>
