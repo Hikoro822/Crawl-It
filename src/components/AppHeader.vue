@@ -38,7 +38,6 @@
 .header {
   padding: 20px;
   background: linear-gradient(135deg, #2C2C2C, #1C1C1C);
-  height: 100vh;
   font-size: #FFFFFF;
   overflow: hidden;
 

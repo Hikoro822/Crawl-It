@@ -37,6 +37,7 @@ const goToAboutPage = () => {
 
 <style scoped lang="scss">
 .hero {
+    background: transparent;
     color: #fff;
     font-size: 18px;
 
