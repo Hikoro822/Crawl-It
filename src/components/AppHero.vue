@@ -1,118 +1,102 @@
 <script setup>
-import { useRouter } from 'vue-router';
 
-const router = useRouter();
-const goToAboutPage = () => {
-    router.push('/LearnMore');
-};
 </script>
 
 <template>
-    <section class="hero">
-        <div class="hero__container">
-            <div class="hero__wrapper">
-                <div class="hero__left">
-                    <span>
-                        Новое IT комьюнити
-                    </span>
-                    <h2 class="hero__title">
-                        Crawl IT
-                        Community
-                    </h2>
-                    <p class="hero__description">
-                        Crawl IT — это веб-коммьюнити для начинающих айтишников и менторов. Менторы публикуют задачи по
-                        программированию, ученики их выполняют и получают обратную связь, прокачивая навыки и опыт.
-                    </p>
-                    <button class="hero__button">
-                            <RouterLink to="/more">Узнать больше</RouterLink>
-                    </button>
-                </div>
-                <div class="hero__right">
-                    <img src="/Gleb.png" alt="super img" class="hero__img">
-                </div>
-            </div>
-        </div>
-    </section>
+  <section class="hero">
+    <div class="hero__container">
+      <div class="hero__wrapper">
+        <h2 class="hero__subtitle">
+          Новое IT комьюнити
+        </h2>
+        <h1 class="hero__title">
+          Crawl IT
+        </h1>
+        <p class="hero__description">
+          Crawl IT — это онлайн-сообщество для начинающих разработчиков и менторов. Менторы публикуют задачи по
+          программированию, а новички решают их и получают обратную связь, развивая свои навыки.
+        </p>
+        <RouterLink to="/more" class="hero__link">
+          Узнать больше
+        </RouterLink>
+      </div>
+      <img src="/heroImg.png" alt="super img" class="hero__img">
+    </div>
+  </section>
 </template>
 
 <style scoped lang="scss">
 .hero {
-    background: transparent;
-    color: #fff;
-    font-size: 18px;
+  width: 100%;
+  height: 100%;
 
-    span {
-        font-size: 48px;
-        font-weight: 700;
-    }
-}
-
-.hero__container {
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    padding-left: 100px;
     max-width: 1400px;
-    margin-left: auto;
-    margin-right: auto;
-}
+    margin: auto;
+  }
 
-.hero__description {
-    max-width: 430px;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    height: 550px;
+    padding: 50px;
+    z-index: 1;
+  }
+
+  &__title {
+    font-size: 72px;
+    margin-bottom: 40px;
+    font-weight: 700;
+    color: #E4E4E4;
+  }
+
+  &__subtitle {
+    font-size: 32px;
+    margin-bottom: 10px;
+    font-weight: 700;
+    color: #E4E4E4;
+  }
+
+  &__description {
     font-weight: 300;
-    font-size: 18px;
+    font-size: 24px;
     line-height: 140%;
     letter-spacing: 0;
     color: #E4E4E4;
     margin-bottom: 20px;
-}
+  }
 
-.hero__button {
+  &__link {
+    width: 90%;
+    margin-top: 50px;
     padding: 14px 40px;
     background: linear-gradient(135deg, #E2A300, #E29500);
-    box-shadow: 0px 2px 13px #E29E007A;
-    color: #000;
     font-size: 18px;
     font-weight: 700;
     border-radius: 6px;
     transition: .55s;
+    color: #1a1a1a;
+    text-align: center;
 
     &:hover {
-        box-shadow: 0px 2px 19px #e29e00bd;
+      box-shadow: 0 2px 19px #e29e00bd;
+      font-size: 20px;
     }
+  }
 
-    &:active {
-        scale: .9;
-    }
+  &__img {
+    width: 700px;
+    height: 500px;
+    scale: 1.4;
+    z-index: 0;
+  }
 }
 
-.hero__wrapper {
-    display: flex;
-    // gap: 100px;
-}
 
-.hero__title {
-    font-size: 72px;
-    margin-bottom: 10px;
-    font-weight: 700;
-}
-
-.hero__list {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-bottom: 20px;
-}
-
-.hero__right {
-    img {
-        border-radius: 8px;
-        max-width: 200%;
-        position: relative;
-        margin-left: 0px;
-        top: 200px;
-        width: 500px;
-    }
-}
-
-.hero__left {
-    position: relative;
-    top: 100px;
-}
 </style>
