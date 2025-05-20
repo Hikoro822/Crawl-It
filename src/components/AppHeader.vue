@@ -14,10 +14,10 @@
           <nav class="menu">
             <ul class="menu__list">
               <li class="menu__item">
-                <a href="#" class="menu__link  link link--active">Главная страница</a>
+                <a href="/" class="menu__link  link link--active">Главная страница</a>
               </li>
               <li class="menu__item">
-                <a href="#" class="menu__link link">Наши контакты</a>
+                <a href="/more" class="menu__link link">Наши контакты</a>
               </li>
               <li class="menu__item">
                 <a href="#" class="menu__link link">Войти</a>
@@ -64,6 +64,7 @@
 .menu {
   position: relative;
   &__list {
+    list-style: none;
     display: flex;
     gap: 100px;
   }
