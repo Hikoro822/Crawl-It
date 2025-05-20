@@ -3,9 +3,5 @@ import AppHero from '@/components/AppHero.vue'
 </script>
 
 <template>
-    <AppHero/>
+  <AppHero/>
 </template>
-
-<style scoped lang="scss">
-
-</style>
