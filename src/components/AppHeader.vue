@@ -18,10 +18,10 @@
             <a href="/more" class="header__menu-link">О нас</a>
           </li>
           <li class="header__menu-item">
-            <a href="/more" class="header__menu-link">Задачи</a>
+            <a href="/tasks" class="header__menu-link">Задачи</a>
           </li>
           <li class="header__menu-item">
-            <a href="/more" class="header__menu-link">Курсы</a>
+            <a href="/courses" class="header__menu-link">Курсы</a>
           </li>
         </ul>
       </nav>
