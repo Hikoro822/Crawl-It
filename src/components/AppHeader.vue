@@ -10,7 +10,6 @@
           <div class="logo">
             <a href="#"><img src="/logo.png" alt="logo" title="logo"></a>
           </div>
-
           <nav class="menu">
             <ul class="menu__list">
               <li class="menu__item">
@@ -20,10 +19,10 @@
                 <a href="/more" class="menu__link link">Наши контакты</a>
               </li>
               <li class="menu__item">
-                <a href="/login" class="menu__link link">Войти</a>
+                <a href="/auth?form=login" class="menu__link link">Войти</a>
               </li>
               <li class="menu__item">
-                <a href="/register" class="menu__link link">Зарегистрироваться</a>
+                <a href="/auth?form=register" class="menu__link link">Зарегистрироваться</a>
               </li>
             </ul>
           </nav>
@@ -36,7 +35,7 @@
 
 <style scoped lang="scss">
 .header {
-  //padding: 20px
+  z-index: 10;
   border-bottom: 1px solid #333333;
 
   &__container {

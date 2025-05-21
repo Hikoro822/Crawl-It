@@ -1,53 +1,64 @@
-<script setup>
-const login = {
-  title: 'Авторизация'
-}
+<script setup lang="ts">
 </script>
 
 <template>
-  <form action="#" class="login">
+  <form class="login">
     <div class="login__header">
-      <h2 class="login__title">{{login.title}}</h2>
+      <h2 class="login__title">{{ $t('auth.login.title') }}</h2>
       <div class="login__divider"></div>
     </div>
 
     <div class="login__group">
-      <input type="email" id="email" class="login__input" required placeholder=" ">
-      <label for="email" class="login__label">Логин</label>
+      <input
+          id="email"
+          type="text"
+          required
+          class="login__input"
+          placeholder=" "
+      />
+      <label for="email" class="login__label">
+        {{ $t('auth.login.email') }}
+      </label>
     </div>
 
     <div class="login__group">
-      <input type="password" id="password" class="login__input" required placeholder=" ">
-      <label for="password" class="login__label">Пароль</label>
+      <input
+          id="password"
+          type="password"
+          required
+          class="login__input"
+          placeholder=" "
+      />
+      <label for="password" class="login__label">
+        {{ $t('auth.login.password') }}
+      </label>
     </div>
+
+    <span class="login__forget">
+      {{ $t('auth.login.forget') }}
+    </span>
 
     <button type="submit" class="login__button">
-      Войти
+      {{ $t('auth.login.title') }}
     </button>
-
-    <div class="login__footer">
-      <a href="#" class="login__link">Забыли пароль?</a>
-      <a href="#" class="login__link">Регистрация</a>
-    </div>
   </form>
 </template>
 
 <style scoped lang="scss">
 .login {
-  margin-top: 40px;
-  border-radius: 24px;
   padding: 48px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 100%;
   max-width: 400px;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
+  text-align: center;
 
   &__header {
     margin-bottom: 32px;
-    text-align: center;
   }
 
   &__title {
@@ -104,6 +115,18 @@ const login = {
     font-size: 16px;
   }
 
+  &__forget {
+    font-size: 14px;
+    color: rgba(255, 255, 255, 0.6);
+    margin-bottom: 24px;
+    cursor: pointer;
+    transition: color 0.3s;
+
+    &:hover {
+      color: rgba(255, 255, 255, 0.9);
+    }
+  }
+
   &__button {
     width: 100%;
     padding: 16px;
@@ -115,7 +138,6 @@ const login = {
     border: none;
     cursor: pointer;
     transition: all 0.3s ease;
-    margin-top: 8px;
 
     &:hover {
       background: rgba(255, 255, 255, 0.15);
@@ -125,24 +147,20 @@ const login = {
       transform: scale(0.98);
     }
   }
+}
 
-  &__footer {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 24px;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  &__link {
-    color: rgba(255, 255, 255, 0.6);
-    font-size: 14px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-
-    &:hover {
-      color: rgba(255, 255, 255, 0.9);
-    }
+@media (max-width: 700px) {
+  .login {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    border-radius: 12px;
+    box-shadow:
+        0 15px 27px #93c5fd,
+        0 10px 10px #93c5fd;
+    padding: 32px;
   }
 }
 </style>
