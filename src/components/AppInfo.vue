@@ -7,7 +7,6 @@
     <div class="learnMore__container">
       <div class="learnMore__wrapper">
         <h2 class="learnMore__title">О сообществе</h2>
-
         <p class="learnMore__intro">
           <strong>Crawl IT Community</strong> — это образовательная платформа и сообщество для разработчиков,
           стремящихся
@@ -43,14 +42,16 @@
       </div>
 
       <div class="learnMore__right">
-        <img src="/img.png" alt="super img" class="learnMore__img"/>
+        <img src="/img.png" alt="Обложка сообщества" class="learnMore__img"/>
 
         <div class="learnMore__socials">
-          <a href="https://t.me/your_username" target="_blank" class="learnMore__social">
+          <a href="https://t.me/crawl_it" target="_blank" rel="noopener noreferrer" class="learnMore__social"
+             aria-label="Наш Telegram">
             <img class="learnMore__social-icon" src="/tg_logo.png" alt="Telegram"/>
             <span class="learnMore__social-text">Telegram</span>
           </a>
-          <a href="https://github.com/your_username" target="_blank" class="learnMore__social">
+          <a href="https://discord.gg/8rhJRPHqRq" target="_blank" rel="noopener noreferrer" class="learnMore__social"
+             aria-label="Наш Discord">
             <img class="learnMore__social-icon" src="/discord_logo.png" alt="Discord"/>
             <span class="learnMore__social-text">Discord</span>
           </a>
@@ -60,65 +61,68 @@
   </section>
 </template>
 
+
 <style scoped lang="scss">
 .learnMore {
   width: 100%;
+  height: 100%;
+  padding: 20px;
   color: #e4e4e4;
-  padding: 100px 0;
 
   &__container {
-    width: 100%;
+    height: 100%;
     max-width: 1400px;
-    margin: auto;
-    padding-left: 100px;
+    margin: 0 auto;
     display: flex;
-    align-items: flex-start;
-    gap: 40px;
   }
 
   &__wrapper {
+    height: 100%;
+    max-width: 50%;
     display: flex;
     flex-direction: column;
-    width: 50%;
-    z-index: 1;
+    gap: 10px;
   }
 
   &__right {
-    width: 50%;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 30px;
+    gap: 42px;
   }
 
   &__img {
-    width: 100%;
-    max-width: 700px;
+    max-height: 450px;
+    height: 100%;
+    object-fit: contain;
     scale: 1.2;
   }
 
   &__socials {
-    margin-top: 40px;
     display: flex;
-    gap: 10px;
+    gap: 16px;
+    justify-content: center;
+    left: 10px;
   }
 
   &__social {
     display: flex;
     align-items: center;
-    gap: 10px;
+    justify-content: space-around;
+    width: 150px;
     background-color: #2a2a2a;
-    padding: 12px 20px;
+    padding: 10px 20px;
     border-radius: 8px;
-    color: #e4e4e4;
-    font-weight: 600;
     text-decoration: none;
+    font-weight: 600;
+    color: #e4e4e4;
     transition: all 0.3s ease;
 
     &:hover {
       background-color: #ffc107;
       color: #1a1a1a;
-      transform: translateX(5px);
+      transform: translateY(-2px);
     }
   }
 
@@ -129,18 +133,16 @@
   }
 
   &__social-text {
-    height: 24px;
     font-size: 16px;
-    line-height: 165%;
   }
 
   &__title {
-    font-size: 48px;
+    font-size: 32px;
     font-weight: 700;
   }
 
   &__intro {
-    font-size: 20px;
+    font-size: 16px;
     font-weight: 300;
     line-height: 1.6;
   }
@@ -148,11 +150,11 @@
   &__block {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 12px;
   }
 
   &__subtitle {
-    font-size: 28px;
+    font-size: 20px;
     font-weight: 600;
     color: #ffc107;
   }
@@ -162,9 +164,10 @@
     padding-left: 20px;
 
     & > .learnMore__item {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 300;
       margin-bottom: 8px;
+
       strong {
         font-weight: 600;
         color: #ffc107;
@@ -172,18 +175,13 @@
     }
   }
 
-  &__text {
-    font-size: 18px;
-    font-weight: 300;
-  }
-
   &__quote {
-    margin-top: 40px;
-    font-style: italic;
     padding-left: 20px;
     border-left: 4px solid #e29500;
+    font-style: italic;
+    font-size: 18px;
     color: #ddd;
-    font-size: 20px;
   }
 }
+
 </style>
