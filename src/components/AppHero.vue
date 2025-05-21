@@ -91,12 +91,15 @@
   }
 
   &__img {
-    width: 700px;
-    height: 500px;
+    max-width: 50%;
     scale: 1.4;
     z-index: 0;
   }
 }
 
-
+@media (max-width: 1500px) {
+  .hero__img{
+    max-width: 30%;
+  }
+}
 </style>

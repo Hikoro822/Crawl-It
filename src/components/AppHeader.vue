@@ -36,9 +36,7 @@
 
 <style scoped lang="scss">
 .header {
-  padding: 20px;
-  background: linear-gradient(135deg, #2C2C2C, #1C1C1C);
-  overflow: hidden;
+  //padding: 20px
   border-bottom: 1px solid #333333;
 
   &__container {
@@ -99,25 +97,4 @@
   transition: all 0.3s;
 }
 
-
-.secondary {
-  background: #26252585;
-  border: 1px solid #ffffff54;
-  color: #495057;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-}
-
-.gradient {
-  background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-  color: white;
-  box-shadow: 0 4px 12px rgba(106, 17, 203, 0.3);
-}
-
-.button {
-  transition: .55s;
-
-  &:hover {
-    transform: scale(1.1);
-  }
-}
 </style>
