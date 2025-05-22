@@ -6,13 +6,45 @@ import Tasks from "@/pages/Tasks.vue";
 import Courses from "@/pages/Courses.vue";
 import Agreement from "@/pages/Agreement.vue";
 import Privacy from "@/pages/Privacy.vue";
+import Profile from "@/pages/Profile.vue";
 
 const routes = [
-    {path: '/home', component: Home},
-    {path: '/more', component: LearnMore},
-    {path: '/auth', component: Auth},
-    {path: '/tasks', component: Tasks},
-    {path: '/courses', component: Courses},
+    {
+        path: '/home', component: Home,
+        meta: {
+            layout: "Layout"
+        }
+    },
+    {
+        path: '/more', component: LearnMore,
+        meta: {
+            layout: "Layout"
+        }
+    },
+    {
+        path: '/auth', component: Auth,
+        meta: {
+            layout: "Layout"
+        }
+    },
+    {
+        path: '/tasks', component: Tasks,
+        meta: {
+            layout: "BaseLayout"
+        }
+    },
+    {
+        path: '/courses', component: Courses,
+        meta: {
+            layout: "BaseLayout"
+        }
+    },
+    {
+        path: '/profile', component: Profile,
+        meta: {
+            layout: "BaseLayout"
+        }
+    },
     {path: '/agreement', component: Agreement},
     {path: '/privacy', component: Privacy},
 ];

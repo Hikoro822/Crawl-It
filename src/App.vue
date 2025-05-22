@@ -7,7 +7,7 @@ import {useRoute} from "vue-router";
 const route = useRoute()
 
 const layout = computed(() => {
-  const name = route.meta.layout || 'DefaultLayout'
+  const name = route.meta.layout || 'Layout'
   return layouts[name] || BaseLayout
 })
 
