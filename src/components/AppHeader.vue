@@ -12,7 +12,7 @@
       <nav class="header__nav">
         <ul class="header__menu">
           <li class="header__menu-item">
-            <a href="/" class="header__menu-link header__menu-link--active">Главная страница</a>
+            <a href="/home" class="header__menu-link header__menu-link--active">Главная страница</a>
           </li>
           <li class="header__menu-item">
             <a href="/more" class="header__menu-link">О нас</a>
