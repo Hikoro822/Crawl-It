@@ -9,7 +9,7 @@ const toggleSidebar = () => {
 }
 
 const navItems = [
-  {icon: Home, label: 'Главная', to: '/home'},
+  {icon: Home, label: 'Главная', to: '/'},
   {icon: User, label: 'Профиль', to: '/profile'},
   {icon: BookOpen, label: 'Курсы', to: '/courses'},
   {icon: ListChecks, label: 'Задачи', to: '/tasks'}
