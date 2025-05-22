@@ -22,7 +22,7 @@ import AppFooter from '@/components/AppFooter.vue';
   overflow: hidden;
 
   &__main {
-    height: calc(100% - 300px);
+    height: calc(100% - 164px);
     display: flex;
     justify-content: center;
     align-items: center;

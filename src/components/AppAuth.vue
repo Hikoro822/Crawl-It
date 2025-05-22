@@ -78,9 +78,9 @@ const handleClickRegister =  () => {
 
 <style scoped lang="scss">
 .auth-wrapper {
-  display: grid;
-  place-items: center;
-  height: calc(100vh - 75px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 500px;
   min-width: 800px;
   position: relative;
@@ -91,14 +91,11 @@ const handleClickRegister =  () => {
   position: relative;
   width: 100%;
   height: 550px;
-  border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 133, 255, 0.47);
   background-position: top;
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.95;
-  transition: all 0.6s ease-in-out;
-
   .login,
   .register {
     position: absolute;
@@ -129,6 +126,7 @@ const handleClickRegister =  () => {
       opacity: 0;
       z-index: 1;
     }
+
     .register {
       transform: translateX(0);
       opacity: 1;
@@ -137,22 +135,18 @@ const handleClickRegister =  () => {
 
     .auth-container__overlay {
       transform: translateX(-100%);
-      transition: transform 0.6s ease-in-out;
     }
 
     .auth-overlay {
       transform: translateX(50%);
-      transition: transform 0.6s ease-in-out;
     }
 
     .auth-panel--left {
       transform: translateX(0);
-      transition: transform 0.6s ease-in-out;
     }
 
     .auth-panel--right {
       transform: translateX(20%);
-      transition: transform 0.6s ease-in-out;
     }
   }
 }
@@ -174,8 +168,8 @@ const handleClickRegister =  () => {
   height: 100%;
   left: -100%;
   transform: translateX(0);
-  transition: transform 0.6s ease-in-out;
   display: flex;
+  transition: transform 0.6s ease-in-out;
 }
 
 .auth-panel {
@@ -189,8 +183,8 @@ const handleClickRegister =  () => {
   width: 50%;
   height: 100%;
   padding: 20px;
-  background-color: rgba(242, 242, 242, 0.85);
-  color: #333;
+  background-color: #3a3a3a;
+  color: #e4e4e4;
   box-sizing: border-box;
   transition: transform 0.6s ease-in-out;
 
@@ -206,41 +200,45 @@ const handleClickRegister =  () => {
 
   &__title {
     margin: 0;
+    font-size: 22px;
     font-weight: 600;
+    line-height: 1.5;
   }
 
   &__text {
-    font-size: 1.2rem;
+    font-size: 1rem;
     display: block;
     margin-top: 10px;
+    color: #ffc107;
+    font-weight: 500;
   }
 }
 
 .auth-button {
-  background-color: #0d6efd;
+  background-color: #ffc107;
+  color: #1a1a1a;
   border: none;
   border-radius: 8px;
-  color: white;
-  cursor: pointer;
   font-weight: 600;
-  padding: 14px 28px;
+  padding: 12px 24px;
   font-size: 1rem;
+  cursor: pointer;
   transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #0b5ed7;
+    background-color: #e6ac00;
   }
 }
 
 @media (max-width: 700px) {
   .auth-container {
     box-shadow: none;
-    background-image: none !important;
     overflow: visible;
     display: flex;
     height: auto;
     max-width: none;
     border-radius: 0;
+    background-color: transparent;
 
     &.active {
       .login {
@@ -270,9 +268,7 @@ const handleClickRegister =  () => {
     position: relative;
     width: 100%;
     background-color: transparent;
-    color: inherit;
     padding: 20px 0;
-    box-shadow: none !important;
 
     &--left,
     &--right {
@@ -288,4 +284,5 @@ const handleClickRegister =  () => {
     margin-top: 24px !important;
   }
 }
+
 </style>
