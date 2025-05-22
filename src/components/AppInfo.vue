@@ -74,10 +74,11 @@
     max-width: 1400px;
     margin: 0 auto;
     display: flex;
+    align-items: center;
   }
 
   &__wrapper {
-    height: 100%;
+    max-height: 100%;
     max-width: 50%;
     display: flex;
     flex-direction: column;
