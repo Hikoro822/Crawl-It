@@ -28,17 +28,17 @@ const navItems = [
       </button>
 
       <nav class="layout__nav">
-        <a
+        <RouterLink
             class="layout__nav-item"
             v-for="item in navItems"
             :key="item.to"
-            :href="item.to"
-        >
-          <component :is="item.icon" :size="24"/>
-          <span :class="['layout__nav-label', { visible: isExpanded }]">
+            :to="item.to"
+            >
+            <component :is="item.icon" :size="24"/>
+            <span :class="['layout__nav-label', { visible: isExpanded }]">
             {{ item.label }}
           </span>
-        </a>
+        </RouterLink>
       </nav>
     </aside>
   </div>

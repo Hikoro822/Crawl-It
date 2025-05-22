@@ -12,22 +12,22 @@
       <nav class="header__nav">
         <ul class="header__menu">
           <li class="header__menu-item">
-            <a href="/home" class="header__menu-link header__menu-link--active">Главная страница</a>
+            <RouterLink to="/home" class="header__menu-link header__menu-link--active">Главная страница</RouterLink>
           </li>
           <li class="header__menu-item">
-            <a href="/more" class="header__menu-link">О нас</a>
+            <RouterLink to="/more" class="header__menu-link">О нас</RouterLink>
           </li>
           <li class="header__menu-item">
-            <a href="/tasks" class="header__menu-link">Задачи</a>
+            <RouterLink to="/tasks" class="header__menu-link">Задачи</RouterLink>
           </li>
           <li class="header__menu-item">
-            <a href="/courses" class="header__menu-link">Курсы</a>
+            <RouterLink to="/courses" class="header__menu-link">Курсы</RouterLink>
           </li>
         </ul>
       </nav>
       <div class="header__actions">
-        <a href="/auth?form=login" class="header__button">Войти</a>
-        <a href="/auth?form=register" class="header__button">Создать</a>
+        <RouterLink to="/auth?form=login" class="header__button">Войти</RouterLink>
+        <RouterLink to="/auth?form=register" class="header__button">Создать</RouterLink>
       </div>
     </div>
   </header>
