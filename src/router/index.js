@@ -7,73 +7,51 @@ import Courses from "@/pages/Courses.vue";
 import Agreement from "@/pages/Agreement.vue";
 import Privacy from "@/pages/Privacy.vue";
 import Profile from "@/pages/Profile.vue";
-import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 const routes = [
     {
-        path: '/home',
-        component: Home,
+        path: '/home', component: Home,
         meta: {
             layout: "Layout"
         }
     },
     {
-        path: '/more',
-        component: LearnMore,
+        path: '/more', component: LearnMore,
         meta: {
             layout: "Layout"
         }
     },
     {
-        path: '/auth',
-        component: Auth,
+        path: '/auth', component: Auth,
         meta: {
             layout: "Layout"
         }
     },
     {
-        path: '/tasks',
-        component: Tasks,
+        path: '/tasks', component: Tasks,
         meta: {
             layout: "BaseLayout"
         }
     },
     {
-        path: '/courses',
-        component: Courses,
+        path: '/courses', component: Courses,
         meta: {
             layout: "BaseLayout"
         }
     },
     {
-        path: '/profile',
-        component: Profile,
+        path: '/profile', component: Profile,
         meta: {
             layout: "BaseLayout"
         }
     },
-    {
-        path: '/agreement',
-        component: Agreement
-    },
-    {
-        path: '/privacy',
-        component: Privacy
-    },
-    {
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: NotFoundPage,
-        meta: {
-            layout: "BaseLayout"
-        }
-    }
+    {path: '/agreement', component: Agreement},
+    {path: '/privacy', component: Privacy},
 ];
 
 const router = createRouter({
     history: createWebHistory(),
     routes,
 });
-
 
 export default router;
