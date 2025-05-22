@@ -75,11 +75,12 @@ export default {
 
 <style lang="scss" scoped>
 .agreement {
+  height: 100%;
   padding: 20px;
   background: #222;
   color: #fff;
   width: 100%;
-
+  overflow-y: auto;
   &__container {
     max-width: 1440px;
     margin-left: auto;
