@@ -39,7 +39,9 @@
     </span>
 
     <button type="submit" class="login__button">
+      <RouterLink to="/profile">
       {{ $t('auth.login.title') }}
+      </RouterLink>
     </button>
   </form>
 </template>
