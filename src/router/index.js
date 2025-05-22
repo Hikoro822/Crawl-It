@@ -10,7 +10,7 @@ import Profile from "@/pages/Profile.vue";
 
 const routes = [
     {
-        path: '/home', component: Home,
+        path: '/', component: Home,
         meta: {
             layout: "Layout"
         }
