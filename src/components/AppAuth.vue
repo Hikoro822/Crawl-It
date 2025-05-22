@@ -87,9 +87,9 @@ const handleClickRegister =  () => {
 }
 
 .auth-container {
+  border-radius: 50%;
   position: relative;
   width: 100%;
-  max-width: 700px;
   height: 550px;
   border-radius: 5px;
   box-shadow: 0 0 20px rgba(0, 133, 255, 0.47);
@@ -113,6 +113,7 @@ const handleClickRegister =  () => {
     z-index: 2;
     transform: translateX(0);
     opacity: 1;
+    
   }
 
   .register {
