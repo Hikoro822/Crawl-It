@@ -7,6 +7,7 @@ import Courses from "@/pages/Courses.vue";
 import Agreement from "@/pages/Agreement.vue";
 import Privacy from "@/pages/Privacy.vue";
 import Profile from "@/pages/Profile.vue";
+import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 const routes = [
     {
@@ -47,6 +48,15 @@ const routes = [
     },
     {path: '/agreement', component: Agreement},
     {path: '/privacy', component: Privacy},
+
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: NotFoundPage,
+        meta: {
+            layout: "BaseLayout"
+        },
+    }
 ];
 
 const router = createRouter({
