@@ -1,20 +1,52 @@
 <script setup lang="ts">
+import {ref} from 'vue';
+import {useRouter} from 'vue-router';
+import {authService} from '@/services/auth'
+
+const email = ref('');
+const password = ref('');
+const errorMessage = ref('');
+const router = useRouter();
+
+async function handleLogin(event) {
+  event.preventDefault();
+  errorMessage.value = '';
+
+  try {
+    const success = await authService.login(email.value, password.value);
+
+    if (success) {
+      await router.push('/profile');
+    }
+  } catch (error) {
+    errorMessage.value = error.message || 'Ошибка сервера. Попробуйте позже.';
+    console.error('Login error:', error);
+  }
+}
+
 </script>
 
 <template>
-  <form class="login">
+  <form class="login" @submit="handleLogin">
     <div class="login__header">
       <h2 class="login__title">Авторизация</h2>
       <div class="login__divider"></div>
     </div>
 
+    <div v-if="errorMessage" class="login__error">
+      {{ errorMessage }}
+    </div>
+
     <div class="login__group">
       <input
+
           id="email"
+          v-model="email"
           type="text"
           required
           class="login__input"
           placeholder=" "
+
       />
       <label for="email" class="login__label">
         Почта
@@ -24,6 +56,7 @@
     <div class="login__group">
       <input
           id="password"
+          v-model="password"
           type="password"
           required
           class="login__input"
@@ -34,14 +67,12 @@
       </label>
     </div>
 
-    <span class="login__forget">
+    <RouterLink to="/forgot" class="login__forget">
       Забыли пароль?
-    </span>
+    </RouterLink>
 
     <button type="submit" class="login__button">
-      <RouterLink to="/profile">
-        Войти
-      </RouterLink>
+      Войти
     </button>
   </form>
 </template>
@@ -105,6 +136,16 @@
       opacity: 0.7;
     }
   }
+  &__error {
+    background: rgba(220, 53, 69, 0.2);
+    color: #fff;
+    padding: 12px 16px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-weight: 500;
+    border-left: 3px solid rgba(220, 53, 69, 0.7);
+  }
 
   &__label {
     position: absolute;
@@ -159,9 +200,8 @@
     transform: translate(-50%, -50%);
     width: 90%;
     border-radius: 12px;
-    box-shadow:
-        0 15px 27px #93c5fd,
-        0 10px 10px #93c5fd;
+    box-shadow: 0 15px 27px #93c5fd,
+    0 10px 10px #93c5fd;
     padding: 32px;
   }
 }
