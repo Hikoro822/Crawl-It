@@ -1,57 +1,50 @@
 import {createRouter, createWebHistory} from 'vue-router';
-import Home from '@/pages/Home.vue';
-import LearnMore from '@/pages/LearnMore.vue';
-import Auth from "@/pages/Auth.vue";
-import Tasks from "@/pages/Tasks.vue";
-import Courses from "@/pages/Courses.vue";
-import Agreement from "@/pages/Agreement.vue";
-import Privacy from "@/pages/Privacy.vue";
-import Profile from "@/pages/Profile.vue";
+import Home from '@/pages/HomePage.vue';
+import LearnMore from '@/pages/InfoPage.vue';
+import Auth from "@/pages/AuthPage.vue";
+import Tasks from "@/pages/TasksPage.vue";
+import Courses from "@/pages/CoursesPage.vue";
+import Agreement from "@/pages/AgreementPage.vue";
+import Privacy from "@/pages/PrivacyPage.vue";
+import Profile from "@/pages/ProfilePage.vue";
 
 const routes = [
     {
         path: '/home', component: Home,
-        meta: {
-            layout: "Layout"
-        }
     },
     {
         path: '/more', component: LearnMore,
-        meta: {
-            layout: "Layout"
-        }
     },
     {
         path: '/auth', component: Auth,
-        meta: {
-            layout: "Layout"
-        }
+    },
+    {
+        path: '/agreement', component: Agreement
+    },
+    {
+        path: '/privacy', component: Privacy
     },
     {
         path: '/tasks', component: Tasks,
         meta: {
-            layout: "BaseLayout"
+            layout: "AppLayout"
         }
     },
     {
         path: '/courses', component: Courses,
         meta: {
-            layout: "BaseLayout"
+            layout: "AppLayout"
         }
-    },
-    {
+    }, {
         path: '/profile', component: Profile,
         meta: {
-            layout: "BaseLayout"
+            layout: "AppLayout"
         }
-    },
-    {path: '/agreement', component: Agreement},
-    {path: '/privacy', component: Privacy},
+    }
 ];
 
 const router = createRouter({
-    history: createWebHistory(),
-    routes,
+    history: createWebHistory(), routes,
 });
 
 export default router;

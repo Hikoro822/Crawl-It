@@ -29,10 +29,10 @@ const navItems = [
 
       <nav class="layout__nav">
         <RouterLink
-            class="layout__nav-item"
             v-for="item in navItems"
             :key="item.to"
             :to="item.to"
+            class="layout__nav-item"
             >
             <component :is="item.icon" :size="24"/>
             <span :class="['layout__nav-label', { visible: isExpanded }]">

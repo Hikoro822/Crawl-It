@@ -4,7 +4,7 @@
 <template>
   <form class="login">
     <div class="login__header">
-      <h2 class="login__title">{{ $t('auth.login.title') }}</h2>
+      <h2 class="login__title">Авторизация</h2>
       <div class="login__divider"></div>
     </div>
 
@@ -17,7 +17,7 @@
           placeholder=" "
       />
       <label for="email" class="login__label">
-        {{ $t('auth.login.email') }}
+        Почта
       </label>
     </div>
 
@@ -30,17 +30,17 @@
           placeholder=" "
       />
       <label for="password" class="login__label">
-        {{ $t('auth.login.password') }}
+        Пароль
       </label>
     </div>
 
     <span class="login__forget">
-      {{ $t('auth.login.forget') }}
+      Забыли пароль?
     </span>
 
     <button type="submit" class="login__button">
       <RouterLink to="/profile">
-      {{ $t('auth.login.title') }}
+        Войти
       </RouterLink>
     </button>
   </form>
