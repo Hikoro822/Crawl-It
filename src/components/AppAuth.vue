@@ -2,13 +2,10 @@
 import {ref, watchEffect} from "vue";
 import LoginForm from "@/components/LoginForm.vue";
 import RegisterForm from "@/components/RegisterForm.vue";
-import { useI18n } from "vue-i18n";
 import {useRoute} from "vue-router";
 
 const isShowPanel = ref("");
 const route = useRoute();
-const { t } = useI18n();
-
 const setPanelFromQuery = () => {
   const form = route.query.form;
   isShowPanel.value = form === "register" ? "active" : "";
@@ -18,11 +15,11 @@ watchEffect(() => {
   setPanelFromQuery();
 });
 
-const handleClickSignIn =  () => {
+const handleClickSignIn = () => {
   isShowPanel.value = "";
 };
 
-const handleClickRegister =  () => {
+const handleClickRegister = () => {
   isShowPanel.value = "active";
 };
 
@@ -34,39 +31,39 @@ const handleClickRegister =  () => {
         :class="['auth-container', isShowPanel]"
         :style="{ backgroundImage: 'url(/login.png)' }"
     >
-      <LoginForm class="login" />
-      <RegisterForm class="register" />
+      <LoginForm class="login"/>
+      <RegisterForm class="register"/>
 
       <div class="auth-container__overlay">
         <div class="auth-overlay">
           <div class="auth-panel auth-panel--left">
             <h1 class="auth-panel__title" style="margin-top: 150px;">
-              {{ t("auth.overlay.registerTitle") }}<br /><br />
-              {{ t("auth.overlay.registerWelcome") }}
-              <span class="auth-panel__text">{{ t("auth.overlay.registerText") }}</span>
+              Регистрация<br/><br/>
+              Добро пожаловать!
+              <span class="auth-panel__text">Создайте свою учетную запись.</span>
             </h1>
             <button
                 class="auth-button"
-                @click="handleClickSignIn"
                 style="margin-top: 24px; position: absolute; bottom: 12%;"
                 type="button"
+                @click="handleClickSignIn"
             >
-              {{ t("auth.overlay.loginTitle") }}
+              Вход
             </button>
           </div>
 
           <div class="auth-panel auth-panel--right">
             <h1 class="auth-panel__title" style="margin-top: 150px;">
-              {{ t("auth.overlay.loginWelcome") }}<br /><br />
-              {{ t("auth.overlay.loginText") }}
+              С возвращением!<br/><br/>
+              Пожалуйста, войдите, чтобы продолжить.
             </h1>
             <button
                 class="auth-button"
-                @click="handleClickRegister"
                 style="margin-top: 24px; position: absolute; bottom: 12%;"
                 type="button"
+                @click="handleClickRegister"
             >
-              {{ t("auth.overlay.registerTitle") }}
+              Регистрация
             </button>
           </div>
         </div>
@@ -95,6 +92,7 @@ const handleClickRegister =  () => {
   background-repeat: no-repeat;
   background-size: cover;
   opacity: 0.95;
+
   .login,
   .register {
     position: absolute;
@@ -109,7 +107,7 @@ const handleClickRegister =  () => {
     z-index: 2;
     transform: translateX(0);
     opacity: 1;
-    
+
   }
 
   .register {
@@ -245,12 +243,14 @@ const handleClickRegister =  () => {
         opacity: 0;
         transition: opacity 0.3s ease-in-out;
       }
+
       .register {
         transform: translateX(0);
         opacity: 1;
         z-index: 5;
         transition: opacity 0.3s ease-in-out;
       }
+
       .auth-container__overlay {
         opacity: 0;
         transition: opacity 0.3s ease-in-out;

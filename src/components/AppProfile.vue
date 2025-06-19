@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { ref } from "vue";
-// Здесь позже можно подгрузить данные пользователя из API
+import {ref} from "vue";
+
 const user = ref({
   name: "Иван Новичков",
   email: "ivan@example.com",

@@ -1,7 +1,3 @@
-<script setup>
-
-</script>
-
 <template>
   <section class="hero">
     <div class="hero__container">

@@ -4,7 +4,7 @@
 <template>
   <form class="register">
     <div class="register__header">
-      <h2 class="register__title">{{ $t('auth.register.title') }}</h2>
+      <h2 class="register__title">Регистрация</h2>
       <div class="register__divider"></div>
     </div>
 
@@ -17,7 +17,7 @@
           placeholder=" "
       />
       <label for="username" class="register__label">
-        {{ $t('auth.register.username') }}
+        Имя
       </label>
     </div>
 
@@ -30,7 +30,7 @@
           placeholder=" "
       />
       <label for="email" class="register__label">
-        {{ $t('auth.register.email') }}
+       Почта
       </label>
     </div>
 
@@ -43,7 +43,7 @@
           placeholder=" "
       />
       <label for="password" class="register__label">
-        {{ $t('auth.register.password') }}
+       Пароль
       </label>
     </div>
 
@@ -51,18 +51,18 @@
         type="submit"
         class="register__button"
     >
-      {{ $t('auth.register.title') }}
+     Зарегистрироваться
     </button>
 
     <div class="register__agreement">
-      {{ $t('auth.register.click') }}
+      Документы:
       <div class="register__links">
         <RouterLink to="/agreement" class="register__link">
-          {{ $t('auth.register.agreement') }}
+         Пользовательское соглашение
         </RouterLink>
-        {{ $t('auth.register.and') }}
+        и
         <RouterLink to="/privacy" class="register__link">
-          {{ $t('auth.register.privacy') }}
+         Политика конфиденциальности
         </RouterLink>
       </div>
     </div>

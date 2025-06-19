@@ -4,21 +4,20 @@
 <template>
   <div class="tasks-page">
     <h1 class="tasks-page__title">Задачи для практики</h1>
-
     <div class="tasks-page__filters">
       <div class="tasks-filter">
         <span class="tasks-filter__label">Тип:</span>
         <div class="tasks-filter__options">
           <label class="tasks-filter__option">
-            <input type="radio" name="type" checked />
+            <input type="radio" name="type" checked/>
             Все
           </label>
           <label class="tasks-filter__option">
-            <input type="radio" name="type" />
+            <input type="radio" name="type"/>
             Фронтенд
           </label>
           <label class="tasks-filter__option">
-            <input type="radio" name="type" />
+            <input type="radio" name="type"/>
             Бэкенд
           </label>
         </div>
@@ -28,15 +27,15 @@
         <span class="tasks-filter__label">Уровень:</span>
         <div class="tasks-filter__options">
           <label class="tasks-filter__option">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             Легкий
           </label>
           <label class="tasks-filter__option">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             Средний
           </label>
           <label class="tasks-filter__option">
-            <input type="checkbox" />
+            <input type="checkbox"/>
             Сложный
           </label>
         </div>

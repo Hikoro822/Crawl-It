@@ -1,7 +1,3 @@
-<script setup>
-// никаких зависимостей — если нужно подключить FontAwesome или lucide, напиши, подскажу как
-</script>
-
 <template>
   <section class="learnMore">
     <div class="learnMore__container">
@@ -45,13 +41,15 @@
         <img src="/img.png" alt="Обложка сообщества" class="learnMore__img"/>
 
         <div class="learnMore__socials">
-          <a href="https://t.me/crawl_it" target="_blank" rel="noopener noreferrer" class="learnMore__social"
-             aria-label="Наш Telegram">
+          <a
+              href="https://t.me/crawl_it" target="_blank" rel="noopener noreferrer" class="learnMore__social"
+              aria-label="Наш Telegram">
             <img class="learnMore__social-icon" src="/tg_logo.png" alt="Telegram"/>
             <span class="learnMore__social-text">Telegram</span>
           </a>
-          <a href="https://discord.gg/8rhJRPHqRq" target="_blank" rel="noopener noreferrer" class="learnMore__social"
-             aria-label="Наш Discord">
+          <a
+              href="https://discord.gg/8rhJRPHqRq" target="_blank" rel="noopener noreferrer" class="learnMore__social"
+              aria-label="Наш Discord">
             <img class="learnMore__social-icon" src="/discord_logo.png" alt="Discord"/>
             <span class="learnMore__social-text">Discord</span>
           </a>
