@@ -1,19 +1,41 @@
 <script setup lang="ts">
-import {ref} from "vue";
+import {defineProps, defineEmits} from 'vue';
+import {useAvatar} from '@/composables/useAvatar';
+import {User} from "@/types/user";
 
-const user = ref({
-  name: "Иван Новичков",
-  email: "ivan@example.com",
-  role: "Ученик",
-});
+const props = defineProps<{
+  user: User;
+}>();
+
+const emit = defineEmits<{
+  (e: 'logout'): void;
+  (e: 'updateAvatar', file: File): void;
+}>();
+
+const {avatarUrl, fileInput, error, handleAvatarClick, handleFileChange} = useAvatar(props.user.avatar);
 </script>
 
 <template>
   <div class="profile">
     <div class="profile__container">
       <div class="profile__header">
-        <h1 class="profile__title">{{ user.name }}</h1>
-        <p class="profile__subtitle">{{ user.role }}</p>
+        <div class="profile__avatar-container" @click="handleAvatarClick">
+          <img :src="avatarUrl" alt="Аватар пользователя" class="profile__avatar"/>
+          <div class="profile__avatar-overlay">
+            <span class="profile__avatar-text">Изменить</span>
+          </div>
+          <input
+              ref="fileInput"
+              type="file"
+              accept="image/*"
+              class="profile__file-input"
+              @change="event => handleFileChange(event, file => emit('updateAvatar', file))"
+          />
+        </div>
+        <h1 class="profile__title">{{ props.user.username }}</h1>
+        <p class="profile__subtitle">Ученик</p>
+        <p v-if="error" class="profile__error">{{ error }}</p>
+        <button class="profile__logout-btn" @click="$emit('logout')">Выйти</button>
       </div>
 
       <div class="profile__sections">
@@ -34,20 +56,6 @@ const user = ref({
             </div>
           </div>
         </section>
-
-        <section class="profile__block">
-          <h2 class="profile__block-title">Сданные задачи</h2>
-          <ul class="profile__task-list">
-            <li class="profile__task">Форма логина – принято</li>
-            <li class="profile__task">Роутинг SPA – принято</li>
-            <li class="profile__task">Простой REST API – на проверке</li>
-          </ul>
-        </section>
-
-        <section class="profile__block">
-          <h2 class="profile__block-title">Контакты</h2>
-          <p class="profile__text">{{ user.email }}</p>
-        </section>
       </div>
     </div>
   </div>
@@ -57,7 +65,6 @@ const user = ref({
 .profile {
   width: 100%;
   min-height: 100vh;
-  background-color: #202020;
   color: #e4e4e4;
   padding: 80px 0;
 
@@ -72,6 +79,81 @@ const user = ref({
 
   &__header {
     text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__avatar-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-bottom: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+
+      .profile__avatar-overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  &__avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__avatar-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &__avatar-text {
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+  }
+
+  &__file-input {
+    display: none;
+  }
+
+  &__error {
+    color: #e53935;
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  &__logout-btn {
+    margin-top: 15px;
+    padding: 8px 20px;
+    background-color: #e53935;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #c62828;
+    }
   }
 
   &__title {
@@ -123,24 +205,6 @@ const user = ref({
   &__progress-fill {
     height: 100%;
     background-color: #ffc107;
-  }
-
-  &__task-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  &__task {
-    background-color: #2a2a2a;
-    padding: 12px 20px;
-    margin-bottom: 10px;
-    border-radius: 6px;
-  }
-
-  &__text {
-    font-size: 18px;
-    font-weight: 300;
   }
 }
 </style>
