@@ -9,10 +9,11 @@ import Privacy from "@/pages/PrivacyPage.vue";
 import Profile from "@/pages/ProfilePage.vue";
 import ForgotPage from "@/pages/ForgotPage.vue";
 import ResetPage from "@/pages/ResetPage.vue";
+import {authService} from "@/services/auth.js";
 
 const routes = [
     {
-        path: '/home', component: Home,
+        path: '/', component: Home,
         meta: {
             layout: "LandingLayout"
         }
@@ -38,19 +39,22 @@ const routes = [
     {
         path: '/tasks', component: Tasks,
         meta: {
-            layout: "AppLayout"
+            layout: "AppLayout",
+            requiresAuth: true
         }
     },
     {
         path: '/courses', component: Courses,
         meta: {
-            layout: "AppLayout"
+            layout: "AppLayout",
+            requiresAuth: true
         }
     },
     {
         path: '/profile', component: Profile,
         meta: {
-            layout: "AppLayout"
+            layout: "AppLayout",
+            requiresAuth: true
         }
     },
     {
@@ -76,5 +80,18 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(), routes,
 });
-
+router.beforeEach((to, from, next) => {
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (!authService.isAuthenticated()) {
+            next({
+                path: '/auth',
+                query: {redirect: to.fullPath}
+            });
+        } else {
+            next();
+        }
+    } else {
+        next();
+    }
+});
 export default router;
