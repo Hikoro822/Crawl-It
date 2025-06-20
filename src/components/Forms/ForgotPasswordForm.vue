@@ -48,11 +48,11 @@ async function handleForgotPassword(event) {
     <div class="forgot-password__group">
       <input
           id="forgot-password-email"
+          v-model="email"
           type="email"
           required
           class="forgot-password__input"
           placeholder=" "
-          v-model="email"
       />
       <label for="forgot-password-email" class="forgot-password__label">
         Email

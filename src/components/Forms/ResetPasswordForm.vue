@@ -69,11 +69,11 @@ async function handleResetPassword(event) {
     <div class="reset-password__group">
       <input
           id="reset-password-email"
+          v-model="email"
           type="email"
           required
           class="reset-password__input"
           placeholder=" "
-          v-model="email"
           :disabled="!!email"
       />
       <label for="reset-password-email" class="reset-password__label">
@@ -84,11 +84,11 @@ async function handleResetPassword(event) {
     <div class="reset-password__group">
       <input
           id="reset-password-code"
+          v-model="code"
           type="text"
           required
           class="reset-password__input"
           placeholder=" "
-          v-model="code"
       />
       <label for="reset-password-code" class="reset-password__label">
         Код подтверждения
@@ -98,11 +98,11 @@ async function handleResetPassword(event) {
     <div class="reset-password__group">
       <input
           id="reset-password-new"
+          v-model="newPassword"
           type="password"
           required
           class="reset-password__input"
           placeholder=" "
-          v-model="newPassword"
       />
       <label for="reset-password-new" class="reset-password__label">
         Новый пароль
@@ -112,11 +112,11 @@ async function handleResetPassword(event) {
     <div class="reset-password__group">
       <input
           id="reset-password-confirm"
+          v-model="confirmPassword"
           type="password"
           required
           class="reset-password__input"
           placeholder=" "
-          v-model="confirmPassword"
       />
       <label for="reset-password-confirm" class="reset-password__label">
         Подтвердите пароль

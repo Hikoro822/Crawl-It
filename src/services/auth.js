@@ -35,7 +35,6 @@ export const authService = {
 
     async register(username, email, password) {
         try {
-            console.log("Hello", username, email, password);
             const response = await axios.post(`${API_URL}/register`, {
                 username,
                 email,
