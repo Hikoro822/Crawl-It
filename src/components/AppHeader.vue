@@ -14,12 +14,6 @@
           <li class="header__menu-item">
             <RouterLink to="/more" class="header__menu-link">О нас</RouterLink>
           </li>
-          <li class="header__menu-item">
-            <RouterLink to="/tasks" class="header__menu-link">Задачи</RouterLink>
-          </li>
-          <li class="header__menu-item">
-            <RouterLink to="/courses" class="header__menu-link">Курсы</RouterLink>
-          </li>
         </ul>
       </nav>
       <div class="header__actions">
