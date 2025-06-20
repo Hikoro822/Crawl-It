@@ -9,7 +9,7 @@
       <nav class="header__nav">
         <ul class="header__menu">
           <li class="header__menu-item">
-            <RouterLink to="/home" class="header__menu-link header__menu-link--active">Главная страница</RouterLink>
+            <RouterLink to="/" class="header__menu-link header__menu-link--active">Главная страница</RouterLink>
           </li>
           <li class="header__menu-item">
             <RouterLink to="/more" class="header__menu-link">О нас</RouterLink>

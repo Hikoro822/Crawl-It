@@ -33,9 +33,9 @@ const navItems = [
             :key="item.to"
             :to="item.to"
             class="layout__nav-item"
-            >
-            <component :is="item.icon" :size="24"/>
-            <span :class="['layout__nav-label', { visible: isExpanded }]">
+        >
+          <component :is="item.icon" :size="24"/>
+          <span :class="['layout__nav-label', { visible: isExpanded }]">
             {{ item.label }}
           </span>
         </RouterLink>

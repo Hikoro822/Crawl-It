@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import {ref, watchEffect} from "vue";
-import LoginForm from "@/components/LoginForm.vue";
-import RegisterForm from "@/components/RegisterForm.vue";
+import LoginForm from "@/components/Forms/LoginForm.vue";
+import RegisterForm from "@/components/Forms/RegisterForm.vue";
 import {useRoute} from "vue-router";
 
 const isShowPanel = ref("");
