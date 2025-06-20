@@ -7,22 +7,33 @@ import Courses from "@/pages/CoursesPage.vue";
 import Agreement from "@/pages/AgreementPage.vue";
 import Privacy from "@/pages/PrivacyPage.vue";
 import Profile from "@/pages/ProfilePage.vue";
+import ForgotPage from "@/pages/ForgotPage.vue";
+import ResetPage from "@/pages/ResetPage.vue";
 
 const routes = [
     {
         path: '/home', component: Home,
+        meta: {
+            layout: "LandingLayout"
+        }
     },
     {
         path: '/more', component: LearnMore,
+        meta: {
+            layout: "LandingLayout"
+        }
     },
     {
-        path: '/auth', component: Auth,
+        path: '/agreement', component: Agreement,
+        meta: {
+            layout: "LandingLayout"
+        }
     },
     {
-        path: '/agreement', component: Agreement
-    },
-    {
-        path: '/privacy', component: Privacy
+        path: '/privacy', component: Privacy,
+        meta: {
+            layout: "LandingLayout"
+        }
     },
     {
         path: '/tasks', component: Tasks,
@@ -35,10 +46,29 @@ const routes = [
         meta: {
             layout: "AppLayout"
         }
-    }, {
+    },
+    {
         path: '/profile', component: Profile,
         meta: {
             layout: "AppLayout"
+        }
+    },
+    {
+        path: '/auth', component: Auth,
+        meta: {
+            layout: "BaseLayout"
+        }
+    },
+    {
+        path: '/forgot', component: ForgotPage,
+        meta: {
+            layout: "BaseLayout"
+        }
+    },
+    {
+        path: '/reset', component: ResetPage,
+        meta: {
+            layout: "BaseLayout"
         }
     }
 ];
