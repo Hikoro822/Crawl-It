@@ -1,4 +1,7 @@
 import {createRouter, createWebHistory} from 'vue-router';
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+import {getToast} from "@/composables/useToast.js";
 import Home from '@/pages/HomePage.vue';
 import LearnMore from '@/pages/InfoPage.vue';
 import Auth from "@/pages/AuthPage.vue";
@@ -81,25 +84,21 @@ const router = createRouter({
     history: createWebHistory(), routes,
 });
 
-import NProgress from 'nprogress'
-import 'nprogress/nprogress.css'
-
-
 router.beforeEach((to, from, next) => {
-    NProgress.start()
-    next()
+    const toast = getToast();
+    NProgress.start();
+
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!authService.isAuthenticated()) {
-            next({
+            toast.warning('Для доступа к этой странице нужно войти', {position: 'top'});
+            return next({
                 path: '/',
                 query: {redirect: to.fullPath}
             });
-        } else {
-            next();
         }
-    } else {
-        next();
     }
+
+    next();
 });
 
 router.afterEach(() => {
