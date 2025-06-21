@@ -1,4 +1,10 @@
+<script setup lang="ts">
+import {useProfile} from "@/composables/useProfile";
+import {useAuth} from "@/composables/useAuth";
 
+const {user} = useProfile()
+const {logout} = useAuth()
+</script>
 <template>
   <header class="header">
     <div class="header__container">
@@ -16,9 +22,16 @@
           </li>
         </ul>
       </nav>
-      <div class="header__actions">
+      <div v-if="!user" class="header__actions">
         <RouterLink to="/auth?form=login" class="header__button">Войти</RouterLink>
         <RouterLink to="/auth?form=register" class="header__button">Создать</RouterLink>
+      </div>
+      <div v-else class="header__auth">
+        <RouterLink class="header__profile" to="profile">
+          <img :src="user.avatar" alt="Аватар пользователя" class="header__avatar"/>
+          <p class="header__username">{{ user.username }}</p>
+        </RouterLink>
+        <button class="header__logout" @click="logout">Выйти</button>
       </div>
     </div>
   </header>
@@ -32,6 +45,7 @@
   color: #E4E4E4;
   height: 82px;
   backdrop-filter: blur(2.5px);
+
   &__container {
     max-width: 1440px;
     width: 100%;
@@ -43,7 +57,7 @@
   }
 
 
-  &__logo{
+  &__logo {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -51,17 +65,18 @@
     width: 170px;
   }
 
-  &__img{
+  &__img {
     position: relative;
     width: 40px;
     height: 40px;
   }
-  &__title{
+
+  &__title {
     font-size: 22px;
     white-space: nowrap;
   }
 
-  &__nav{
+  &__nav {
     width: 100%;
     max-width: 600px;
   }
@@ -91,7 +106,7 @@
     }
   }
 
-  &__actions{
+  &__actions {
     display: flex;
     gap: 10px;
     width: 170px;
@@ -100,16 +115,63 @@
   &__button {
     padding: 8px 10px;
     border: 1px solid #E4E4E4;
-    color: #E4E4E4;
     border-radius: 8px;
     font-size: 16px;
     font-weight: 600;
     cursor: pointer;
     transition: 0.6s;
+    color: #E4E4E4;
+
     &:hover {
       color: #111111;
       background-color: #E4E4E4;
       border-color: #111111;
+    }
+  }
+
+  &__auth {
+    display: flex;
+    align-items: center;
+    gap: 5px
+  }
+
+  &__profile {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    background-color: #E4E4E4;
+    gap: 5px;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: 0.3s;
+    &:hover{
+      background-color: #cccccc;
+    }
+  }
+
+  &__avatar {
+    border: 1px solid #1a1a1a;
+    max-height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  &__username {
+    color: #1a1a1a;
+    font-size: 16px;
+  }
+
+  &__logout {
+    padding: 8px 16px;
+    background-color: #dc2626;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+    &:hover {
+      background-color: #b91c1c;
     }
   }
 }
