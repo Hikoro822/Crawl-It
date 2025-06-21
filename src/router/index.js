@@ -80,11 +80,18 @@ const routes = [
 const router = createRouter({
     history: createWebHistory(), routes,
 });
+
+import NProgress from 'nprogress'
+import 'nprogress/nprogress.css'
+
+
 router.beforeEach((to, from, next) => {
+    NProgress.start()
+    next()
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (!authService.isAuthenticated()) {
             next({
-                path: '/auth',
+                path: '/',
                 query: {redirect: to.fullPath}
             });
         } else {
@@ -94,4 +101,8 @@ router.beforeEach((to, from, next) => {
         next();
     }
 });
+
+router.afterEach(() => {
+    NProgress.done()
+})
 export default router;
