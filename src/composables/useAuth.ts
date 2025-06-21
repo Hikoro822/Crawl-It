@@ -1,11 +1,11 @@
 import {ref} from 'vue';
-import {useRouter} from 'vue-router';
+import {useRoute, useRouter} from 'vue-router';
 import {authService} from '@/services/auth';
 import {User} from "@/types/user";
 
-
 export function useAuth() {
     const router = useRouter();
+    const route = useRoute()
     const error = ref('');
 
     const getToken = () => {
@@ -22,7 +22,9 @@ export function useAuth() {
 
     const logout = () => {
         authService.logout();
-        router.push('/auth').then();
+        if (route.meta.requiresAuth) {
+            router.push('/')
+        }
     };
 
     return {
