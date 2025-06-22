@@ -13,6 +13,8 @@ import Profile from "@/pages/ProfilePage.vue";
 import ForgotPage from "@/pages/ForgotPage.vue";
 import ResetPage from "@/pages/ResetPage.vue";
 import {authService} from "@/services/auth.js";
+import Task from "@/components/Task.vue";
+import Course from "@/components/Course.vue";
 
 const routes = [
     {
@@ -77,7 +79,9 @@ const routes = [
         meta: {
             layout: "BaseLayout"
         }
-    }
+    },
+    {path: '/tasks/:id', component: Task},
+    {path: '/courses/:id', component: Course},
 ];
 
 const router = createRouter({
