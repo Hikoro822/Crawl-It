@@ -80,8 +80,18 @@ const routes = [
             layout: "BaseLayout"
         }
     },
-    {path: '/tasks/:id', component: Task},
-    {path: '/courses/:id', component: Course},
+    {
+        path: '/tasks/:id', component: Task,
+        meta: {
+            layout: "AppLayout"
+        }
+    },
+    {
+        path: '/courses/:id', component: Course,
+        meta: {
+            layout: "AppLayout"
+        }
+    },
 ];
 
 const router = createRouter({
