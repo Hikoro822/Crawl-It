@@ -24,11 +24,17 @@
 .footer {
   height: 82px;
   color: #e0e0e0;
-  width: 100%;
   border-top: 1px solid #333;
   box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.1);
-  backdrop-filter: blur(2.5px);
+  width: 100%;
   z-index: 10;
+  backdrop-filter: blur(2.5px);
+  background: linear-gradient(
+          to top,
+          rgba(41, 41, 41, 0.7),
+          rgba(41, 41, 41, 0.8),
+          rgba(41, 41, 41, 1)
+  );
 
   &__content {
     max-width: 1440px;

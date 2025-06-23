@@ -44,7 +44,14 @@ const {logout} = useAuth()
   border-bottom: 1px solid #333;
   color: #E4E4E4;
   height: 82px;
+  width: 100%;
   backdrop-filter: blur(2.5px);
+  background: linear-gradient(
+          to bottom,
+          rgba(41, 41, 41, 0.6),
+          rgba(41, 41, 41, 0.8),
+          rgba(41, 41, 41, 1)
+  );
 
   &__container {
     max-width: 1440px;
@@ -144,7 +151,8 @@ const {logout} = useAuth()
     padding: 4px 8px;
     border-radius: 4px;
     transition: 0.3s;
-    &:hover{
+
+    &:hover {
       background-color: #cccccc;
     }
   }
@@ -170,6 +178,7 @@ const {logout} = useAuth()
     cursor: pointer;
     font-size: 16px;
     transition: 0.3s;
+
     &:hover {
       background-color: #b91c1c;
     }

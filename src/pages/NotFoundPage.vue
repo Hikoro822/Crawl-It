@@ -21,18 +21,16 @@
   align-items: flex-end;
   position: relative;
   height: 100%;
-  overflow: hidden;
   font-family: "Montserrat", sans-serif;
   color: #fff;
   font-size: 18px;
 
   &__img {
-    max-width: 100%;
     animation: catAnim 1.5s ease forwards;
 
     img {
       display: block;
-      width: 100%;
+      max-width: none;
       height: auto;
       object-fit: cover;
     }
