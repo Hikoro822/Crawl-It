@@ -10,6 +10,7 @@ import Profile from "@/pages/ProfilePage.vue";
 import ForgotPage from "@/pages/ForgotPage.vue";
 import ResetPage from "@/pages/ResetPage.vue";
 import {authService} from "@/services/auth.js";
+import NotFoundPage from "@/pages/NotFoundPage.vue";
 
 const routes = [
     {
@@ -71,6 +72,14 @@ const routes = [
     },
     {
         path: '/reset', component: ResetPage,
+        meta: {
+            layout: "BaseLayout"
+        }
+    },
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: NotFoundPage,
         meta: {
             layout: "BaseLayout"
         }
