@@ -1,12 +1,4 @@
 <script setup>
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
-
-const router = useRouter()
-
-onMounted(() => {
-  console.log('NotFoundPage mounted')
-})
 </script>
 
 <template>
@@ -28,8 +20,7 @@ onMounted(() => {
   justify-content: center;
   align-items: flex-end;
   position: relative;
-  top: 180px;
-  height: 100vh;
+  height: 100%;
   overflow: hidden;
   font-family: "Montserrat", sans-serif;
   color: #fff;

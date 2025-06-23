@@ -14,8 +14,8 @@ import ForgotPage from "@/pages/ForgotPage.vue";
 import ResetPage from "@/pages/ResetPage.vue";
 import {authService} from "@/services/auth.js";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
-import Task from "@/components/Task.vue";
-import Course from "@/components/Course.vue";
+import TaskPage from "@/pages/TaskPage.vue";
+import CoursePage from "@/pages/CoursePage.vue";
 
 const routes = [
     {
@@ -82,21 +82,19 @@ const routes = [
         }
     },
     {
-        path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: NotFoundPage,
+        path: '/:pathMatch(.*)*', component: NotFoundPage,
         meta: {
-            layout: "BaseLayout"
+            layout: "LandingLayout"
         }
     },
     {
-        path: '/tasks/:id', component: Task,
+        path: '/tasks/:id', component: TaskPage,
         meta: {
             layout: "AppLayout"
         }
     },
     {
-        path: '/courses/:id', component: Course,
+        path: '/courses/:id', component: CoursePage,
         meta: {
             layout: "AppLayout"
         }
