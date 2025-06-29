@@ -1,5 +1,6 @@
 <script setup>
 import LandingLayout from '@/layouts/LandingLayout.vue'
+import AdminLayout from '@/layouts/AdminLayout.vue'
 import AppLayout from "@/layouts/AppLayout.vue";
 import {computed} from "vue";
 import {useRoute} from "vue-router";
@@ -15,7 +16,8 @@ const layout = computed(() => {
 const layouts = {
   BaseLayout,
   LandingLayout,
-  AppLayout
+  AppLayout,
+  AdminLayout
 }
 </script>
 
