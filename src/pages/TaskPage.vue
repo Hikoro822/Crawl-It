@@ -1,127 +1,47 @@
-<script setup>
-import {ref, computed, onMounted} from 'vue';
+<script lang="ts" setup>
 import {useRoute} from 'vue-router';
-
-const courses = {
-  frontend: [
-    {
-      id: '1',
-      title: 'Верстка лендинга',
-      description: 'Практика создания адаптивного лендинга.',
-      type: 'task',
-      tasks: [{
-        title: 'Создать лендинг',
-        link: '/tasks/landing',
-        instructions: 'Создайте адаптивный лендинг с использованием HTML и CSS.'
-      }],
-      status: 'in-progress',
-    },
-    {
-      id: '2',
-      title: 'ToDo приложение',
-      description: 'Создайте интерактивное приложение ToDo.',
-      type: 'task',
-      tasks: [{
-        title: 'Разработать ToDo',
-        link: '/tasks/todo',
-        instructions: 'Создайте приложение ToDo с добавлением и удалением задач.'
-      }],
-      status: 'locked',
-    },
-  ],
-  backend: [
-    {
-      id: '3',
-      title: 'Сервер на Express',
-      description: 'Создание простого REST API.',
-      type: 'task',
-      tasks: [{
-        title: 'Настроить сервер',
-        link: '/tasks/express-server',
-        instructions: 'Настройте сервер на Express с маршрутом GET /api.'
-      }],
-      status: 'in-progress',
-    },
-    {
-      id: '4',
-      title: 'CRUD API',
-      description: 'Создание API с операциями CRUD.',
-      type: 'task',
-      tasks: [{
-        title: 'Разработать CRUD',
-        link: '/tasks/crud-api',
-        instructions: 'Создайте API с операциями Create, Read, Update, Delete.'
-      }],
-      status: 'locked',
-    },
-  ],
-};
+import {useUsers} from "@/composables/useUsers";
+import {onMounted} from "vue";
+import {useTasks} from "@/composables/useTasks";
 
 const route = useRoute();
 const taskId = route.params.id;
-
-const task = computed(() => {
-  for (const courseType in courses) {
-    const found = courses[courseType].find((step) => step.id === taskId && step.type === 'task');
-    if (found) return found.tasks[0]; // Возвращаем первую задачу
-  }
-  return null;
-});
-
-const progress = ref({});
-const loadProgress = () => {
-  const saved = localStorage.getItem('courseProgress');
-  if (saved) progress.value = JSON.parse(saved);
-};
-
-const saveProgress = () => {
-  localStorage.setItem('courseProgress', JSON.stringify(progress.value));
-};
-
+const {task, loadTask} = useTasks();
+const {users, loadUsersByTask} = useUsers()
 onMounted(() => {
-  loadProgress();
-});
-
-const markAsCompleted = () => {
-  for (const courseType in courses) {
-    const stepIndex = courses[courseType].findIndex((step) => step.id === taskId);
-    if (stepIndex !== -1) {
-      if (!progress.value[courseType]) progress.value[courseType] = [];
-      progress.value[courseType][stepIndex] = {
-        title: courses[courseType][stepIndex].title,
-        status: 'completed',
-      };
-      saveProgress();
-      break;
-    }
-  }
-};
-
-const solution = ref('');
+  loadTask(taskId);
+  loadUsersByTask(taskId);
+})
 </script>
 
 <template>
   <div v-if="task" class="task-page">
     <h1 class="task-page__title">{{ task.title }}</h1>
-    <p class="task-page__description">{{
-        courses[Object.keys(courses).find(type => courses[type].some(step => step.id === taskId))].find(step => step.id === taskId).description
-      }}</p>
+    <p class="task-page__description">{{ task.description }}</p>
     <div class="task-page__instructions">
       <h3 class="task-page__subtitle">Инструкции</h3>
       <p>{{ task.instructions }}</p>
     </div>
     <div class="task-page__solution">
       <h3 class="task-page__subtitle">Ваше решение</h3>
-      <textarea v-model="solution" placeholder="Введите ваше решение..." class="task-page__textarea"></textarea>
+      <textarea placeholder="Введите ваше решение..." class="task-page__textarea"></textarea>
     </div>
     <button
-        v-if="courses[Object.keys(courses).find(type => courses[type].some(step => step.id === taskId))].find(step => step.id === taskId).status !== 'completed'"
         class="task-page__button"
         @click="markAsCompleted"
     >
       Отметить как завершённое
     </button>
-    <div v-else class="task-page__completed">✔ Завершено</div>
+    <div v-if="users.length" class="task-page__users">
+      <h3 class="task-page__subtitle">Пользователи, завершившие задачу</h3>
+      <ul>
+        <li v-for="user in users" :key="user.id">
+          <RouterLink :to="`/users/${user.id}`">
+            👤 {{ user.name }}
+          </RouterLink>
+        </li>
+      </ul>
+    </div>
   </div>
   <div v-else class="task-page">
     <h1 class="task-page__title">Задача не найдена</h1>
@@ -213,5 +133,21 @@ const solution = ref('');
     align-items: center;
     gap: 8px;
   }
+
+  &__users {
+    margin-top: 24px;
+
+    ul {
+      list-style: none;
+      padding-left: 0;
+    }
+
+    li {
+      padding: 4px 0;
+      font-size: 15px;
+      color: #d0d0d0;
+    }
+  }
+
 }
 </style>

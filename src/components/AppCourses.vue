@@ -1,101 +1,22 @@
 <script setup>
-import {ref, computed, onMounted} from 'vue';
+import {useRoadMapList} from "@/composables/useRoadMapList.ts";
 
-// Данные курсов с теорией и задачами
-const courses = {
-  frontend: [
-    {
-      title: 'Основы HTML и CSS',
-      description: 'Научитесь создавать простые страницы, стилизовать элементы.',
-      type: 'theory',
-      content: {title: 'Статья: Введение в HTML и CSS', link: '/courses/1'},
-      status: 'completed',
-    },
-    {
-      title: 'Верстка лендинга',
-      description: 'Практика создания адаптивного лендинга.',
-      type: 'task',
-      tasks: [{title: 'Создать лендинг', link: '/tasks/1'}],
-      status: 'in-progress',
-    },
-    {
-      title: 'JavaScript: базовый уровень',
-      description: 'Изучите переменные, функции, работу с DOM.',
-      type: 'theory',
-      content: {title: 'Видео: Основы JavaScript', link: '/courses/2'},
-      status: 'locked',
-    },
-    {
-      title: 'ToDo приложение',
-      description: 'Создайте интерактивное приложение ToDo.',
-      type: 'task',
-      tasks: [{title: 'Разработать ToDo', link: '/tasks/2'}],
-      status: 'locked',
-    },
-  ],
-  backend: [
-    {
-      title: 'Введение в Node.js',
-      description: 'Основы работы с сервером, npm, модули.',
-      type: 'theory',
-      content: {title: 'Статья: Что такое Node.js', link: '/courses/3'},
-      status: 'completed',
-    },
-    {
-      title: 'Сервер на Express',
-      description: 'Создание простого REST API.',
-      type: 'task',
-      tasks: [{title: 'Настроить сервер', link: '/tasks/3'}],
-      status: 'in-progress',
-    },
-    {
-      title: 'Работа с базой данных',
-      description: 'Основы SQL и взаимодействия с БД.',
-      type: 'theory',
-      content: {title: 'Видео: Введение в SQL', link: '/courses/4'},
-      status: 'locked',
-    },
-    {
-      title: 'CRUD API',
-      description: 'Создание API с операциями CRUD.',
-      type: 'task',
-      tasks: [{title: 'Разработать CRUD', link: '/tasks/4'}],
-      status: 'locked',
-    },
-  ],
-};
-
-const activeCourse = ref('frontend');
-
-const progress = ref({});
-onMounted(() => {
-  ['frontend', 'backend'].forEach((courseType) => {
-    if (!progress.value[courseType]) {
-      progress.value[courseType] = courses[courseType].map((step) => ({
-        title: step.title,
-        status: step.status,
-      }));
-    }
-  });
-});
-const courseSteps = computed(() => {
-  return progress.value[activeCourse.value] || courses[activeCourse.value];
-});
+const {roadmaps, activeCourse, roadMapSteps} = useRoadMapList()
 </script>
 
 <template>
-  <div class="courses-page">
-    <h1 class="courses-page__title">Курсы</h1>
+  <div class="roadmaps-page">
+    <h1 class="roadmaps-page__title">Курсы</h1>
 
-    <div class="courses-page__tabs">
+    <div class="roadmaps-page__tabs">
       <button
-          :class="['courses-page__tab', { 'courses-page__tab--active': activeCourse === 'frontend' }]"
+          :class="['roadmaps-page__tab', { 'roadmaps-page__tab--active': activeCourse === 'frontend' }]"
           @click="activeCourse = 'frontend'"
       >
         Frontend
       </button>
       <button
-          :class="['courses-page__tab', { 'courses-page__tab--active': activeCourse === 'backend' }]"
+          :class="['roadmaps-page__tab', { 'roadmaps-page__tab--active': activeCourse === 'backend' }]"
           @click="activeCourse = 'backend'"
       >
         Backend
@@ -106,9 +27,9 @@ const courseSteps = computed(() => {
       <h2 class="course__title">{{ activeCourse === 'frontend' ? 'Frontend' : 'Backend' }}</h2>
       <ul class="course__steps">
         <li
-            v-for="(step, index) in courseSteps"
+            v-for="(step, index) in roadMapSteps"
             :key="index"
-            :class="['step', `step--${step.status}`, `step--${courses[activeCourse][index].type}`]"
+            :class="['step', `step--${step.status}`, `step--${roadmaps[activeCourse][index].type}`]"
         >
           <div class="step__header">
             <span class="step__status-icon">
@@ -118,22 +39,25 @@ const courseSteps = computed(() => {
             </span>
             <h3 class="step__title">{{ step.title }}</h3>
           </div>
-          <p class="step__description">{{ courses[activeCourse][index].description }}</p>
-          <div v-if="courses[activeCourse][index].type === 'theory'" class="step__content">
+          <p class="step__description">{{ roadmaps[activeCourse][index].description }}</p>
+          <div v-if="step.type === 'theory'" class="step__content">
             <RouterLink
-                :to="courses[activeCourse][index].content.link"
+                :to="`/courses/${step.id}`"
                 :class="{ 'step__content--disabled': step.status === 'locked' }"
             >
-              {{ courses[activeCourse][index].content.title }}
+              {{ step.contentTitle }}
             </RouterLink>
           </div>
-          <ul v-else class="step__tasks">
-            <li v-for="task in courses[activeCourse][index].tasks" :key="task.link" class="step__task">
-              <RouterLink :to="task.link" :class="{ 'step__task--disabled': step.status === 'locked' }">
-                {{ task.title }}
-              </RouterLink>
-            </li>
-          </ul>
+
+          <div v-if="step.type === 'task'" class="step__content">
+            <RouterLink
+                :to="`/tasks/${step.id}`"
+                :class="{ 'step__content--disabled': step.status === 'locked' }"
+            >
+              Задача: {{ step.title }}
+            </RouterLink>
+            <p class="step__instructions">{{ step.instructions }}</p>
+          </div>
         </li>
       </ul>
     </section>
@@ -141,7 +65,7 @@ const courseSteps = computed(() => {
 </template>
 
 <style scoped lang="scss">
-.courses-page {
+.roadmaps-page {
   max-width: 1440px;
   width: 100%;
   color: #f0f0f0;

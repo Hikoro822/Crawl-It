@@ -1,86 +1,74 @@
 <script setup lang="ts">
+import {useTasks} from "@/composables/useTasks";
+import {onMounted} from "vue";
+
+const {tasks, loadTasks, sortOrder, selectedTrack} = useTasks()
+onMounted(() => {
+  loadTasks()
+})
 </script>
 
 <template>
   <div class="tasks-page">
     <h1 class="tasks-page__title">Задачи для практики</h1>
+
     <div class="tasks-page__filters">
       <div class="tasks-filter">
         <span class="tasks-filter__label">Тип:</span>
         <div class="tasks-filter__options">
           <label class="tasks-filter__option">
-            <input type="radio" name="type" checked/>
+            <input
+                v-model="selectedTrack"
+                type="radio"
+                name="type"
+                value="all"/>
             Все
           </label>
           <label class="tasks-filter__option">
-            <input type="radio" name="type"/>
+            <input
+                v-model="selectedTrack"
+                type="radio"
+                name="type"
+                value="frontend"/>
             Фронтенд
           </label>
           <label class="tasks-filter__option">
-            <input type="radio" name="type"/>
+            <input
+                v-model="selectedTrack"
+                type="radio"
+                name="type"
+                value="backend"/>
             Бэкенд
           </label>
         </div>
       </div>
 
       <div class="tasks-filter">
-        <span class="tasks-filter__label">Уровень:</span>
-        <div class="tasks-filter__options">
-          <label class="tasks-filter__option">
-            <input type="checkbox"/>
-            Легкий
-          </label>
-          <label class="tasks-filter__option">
-            <input type="checkbox"/>
-            Средний
-          </label>
-          <label class="tasks-filter__option">
-            <input type="checkbox"/>
-            Сложный
-          </label>
-        </div>
-      </div>
-
-      <div class="tasks-filter">
         <span class="tasks-filter__label">Сортировать:</span>
-        <select class="tasks-filter__select">
-          <option>Сначала новые</option>
-          <option>Сначала старые</option>
-          <option>Популярные</option>
+        <select v-model="sortOrder" class="tasks-filter__select">
+          <option value="new">Сначала новые</option>
+          <option value="old">Сначала старые</option>
         </select>
       </div>
     </div>
 
     <ul class="tasks-list">
-      <li class="task-card">
-        <h2 class="task-card__title">Сделать форму регистрации</h2>
-        <div class="task-card__meta">
-          <span class="task-card__type task-card__type--frontend">Фронтенд</span>
-          <span class="task-card__level task-card__level--easy">Легкий</span>
-          <span class="task-card__date">22 мая 2025</span>
-        </div>
-      </li>
-
-      <li class="task-card">
-        <h2 class="task-card__title">Разработать API для задач</h2>
-        <div class="task-card__meta">
-          <span class="task-card__type task-card__type--backend">Бэкенд</span>
-          <span class="task-card__level task-card__level--medium">Средний</span>
-          <span class="task-card__date">21 мая 2025</span>
-        </div>
-      </li>
-
-      <li class="task-card">
-        <h2 class="task-card__title">Добавить лайки к задачам</h2>
-        <div class="task-card__meta">
-          <span class="task-card__type task-card__type--frontend">Фронтенд</span>
-          <span class="task-card__level task-card__level--medium">Средний</span>
-          <span class="task-card__date">20 мая 2025</span>
-        </div>
+      <li v-for="task in tasks" :key="task.id" class="task-card">
+        <RouterLink :to="`/tasks/${task.id}`" class="task-card__link">
+          <h2 class="task-card__title">{{ task.title }}</h2>
+          <div class="task-card__meta">
+            <span :class="['task-card__type', `task-card__type--${task.track}`]">
+              {{ task.track === 'frontend' ? 'Фронтенд' : 'Бэкенд' }}
+            </span>
+            <span class="task-card__level task-card__level--medium">Средний</span>
+            <span class="task-card__date">ID {{ task.id }}</span>
+          </div>
+        </RouterLink>
       </li>
     </ul>
   </div>
 </template>
+
 
 <style scoped lang="scss">
 .tasks-page {
