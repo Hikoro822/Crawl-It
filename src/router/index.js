@@ -16,6 +16,9 @@ import {authService} from "@/services/auth.js";
 import NotFoundPage from "@/pages/NotFoundPage.vue";
 import TaskPage from "@/pages/TaskPage.vue";
 import CoursePage from "@/pages/CoursePage.vue";
+import UserPage from "@/pages/UserPage.vue";
+import CheckPage from "@/pages/CheckPage.vue";
+import AdminPage from "@/pages/AdminPage.vue";
 
 const routes = [
     {
@@ -90,15 +93,38 @@ const routes = [
     {
         path: '/tasks/:id', component: TaskPage,
         meta: {
-            layout: "AppLayout"
+            layout: "AppLayout",
+            requiresAuth: true
         }
     },
     {
         path: '/courses/:id', component: CoursePage,
         meta: {
-            layout: "AppLayout"
+            layout: "AppLayout",
+            requiresAuth: true
         }
     },
+    {
+        path: '/users/:id', component: UserPage,
+        meta: {
+            layout: "AppLayout",
+            requiresAuth: true
+        }
+    },
+    {
+        path: "/check", component: CheckPage,
+        meta: {
+            layout: "AdminLayout",
+            requiresAuth: true
+        }
+    },
+    {
+        path: "/admin", component: AdminPage,
+        meta: {
+            layout: "AdminLayout",
+            requiresAuth: true
+        }
+    }
 ];
 
 const router = createRouter({
